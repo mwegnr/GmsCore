@@ -213,7 +213,7 @@ fun getApplicationName(context: Context, options: RequestOptions, callingPackage
 }
 
 fun getApkKeyHashFacetId(context: Context, packageName: String): String {
-    val digest = context.packageManager.getFirstSignatureDigest(packageName, "SHA1")
+    val digest = context.packageManager.getFirstSignatureDigest(packageName, "SHA-256")
         ?: throw RequestHandlingException(NOT_ALLOWED_ERR, "Unknown package $packageName")
     return "android:apk-key-hash:${digest.toBase64(HASH_BASE64_FLAGS)}"
 }
